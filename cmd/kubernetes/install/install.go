@@ -20,13 +20,16 @@ var Cmd = &cobra.Command{
 			exec_utils.ExecOut("choco", "install", "kubernetes-cli")
 			exec_utils.ExecOut("choco", "install", "kubernetes-helm")
 			exec_utils.ExecOut("choco", "install", "vscode")
+			return
 		} else if runtime.GOOS == "darwin" {
 			exec_utils.ExecOut("brew", "install", "kubernetes-cli")
 			exec_utils.ExecOut("brew", "install", "kubernetes-helm")
 			exec_utils.ExecOut("brew", "install", "visual-studio-code")
+			return
 		} else if runtime.GOOS == "linux" {
 			exec_utils.ExecOut("slu", "install-bin-tool", "kubectl")
 			exec_utils.ExecOut("slu", "install-bin-tool", "helm")
+			return
 		}
 		log.Fatalln("`training-cli kubernetes install` is not implemented for " + runtime.GOOS + " yet")
 	},
