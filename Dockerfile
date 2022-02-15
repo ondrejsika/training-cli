@@ -1,3 +1,2 @@
 FROM debian:10-slim
-COPY training-cli /
-ENTRYPOINT [ "/training-cli" ]
+COPY training-cli /usr/local/bin/
