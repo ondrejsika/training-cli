@@ -35,12 +35,15 @@ var Cmd = &cobra.Command{
 		// ensure ~/.kube dir
 		file_utils.EnsureDir(kubeDir)
 
-		// backup ~/.kube/config every time
-		copyFile(kubeConf, kubeConfBackup)
+		// backup only if ~/.kube/config exists
+		if _, err := os.Stat(kubeConf); err == nil {
+			// backup ~/.kube/config every time
+			copyFile(kubeConf, kubeConfBackup)
 
-		// backup ~/.kube/config to ~/.kube/config.original only if config.original is not exists
-		if _, err := os.Stat(kubeConfOriginal); errors.Is(err, os.ErrNotExist) {
-			copyFile(kubeConf, kubeConfOriginal)
+			// backup ~/.kube/config to ~/.kube/config.original only if config.original is not exists
+			if _, err := os.Stat(kubeConfOriginal); errors.Is(err, os.ErrNotExist) {
+				copyFile(kubeConf, kubeConfOriginal)
+			}
 		}
 
 		// download ~/.kube/config.sikademo
