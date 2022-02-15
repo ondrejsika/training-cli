@@ -126,3 +126,11 @@ dockers:
         - "--label=com.github.actions.name={{.ProjectName}}"
         - "--label=repository=https://github.com/ondrejsika/training-cli"
         - "--label=maintainer=Ondrej Sika &lt;ondrej@sika.io&gt;"
+
+scoop:
+  bucket:
+    owner: ondrejsika
+    name: scoop-bucket
+  homepage:  https://github.com/ondrejsika/training-cli
+  description: CLI Help for Ondrej Sika's Training
+  license: MIT
