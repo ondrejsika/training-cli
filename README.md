@@ -10,3 +10,20 @@
 ## Example Usage
 
 ![](./misc/images/training-cli_kubernetes_connect.png)
+
+## Install
+
+## Install Mac
+
+```
+brew install ondrejsika/tap/training-cli
+```
+
+## Install Windows
+
+Using **scoop**
+
+```
+scoop bucket add ondrejsika https://github.com/ondrejsika/scoop-bucket.git
+scoop install ondrejsika/training-cli
+```
