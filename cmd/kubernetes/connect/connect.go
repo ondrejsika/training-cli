@@ -1,4 +1,4 @@
-package add_sikademo_cluster
+package connect
 
 import (
 	"errors"
@@ -17,9 +17,9 @@ import (
 )
 
 var Cmd = &cobra.Command{
-	Use:     "add-sikademo-cluster",
+	Use:     "connect",
 	Short:   "Add my sikademo cluster",
-	Aliases: []string{"add"},
+	Aliases: []string{"c", "conn", "con", "add"},
 	Args:    cobra.NoArgs,
 	Run: func(c *cobra.Command, args []string) {
 		home, err := os.UserHomeDir()
@@ -54,7 +54,7 @@ var Cmd = &cobra.Command{
 
 		// copy ~/.kube/config.sikademo to ~/.kube/config
 		copyFile(kubeConfSikademo, kubeConf)
-		fmt.Println("You are connected to sikademo cluster (do-fra1-sikademo)")
+		fmt.Println("You are connected to my demo cluster")
 	},
 }
 

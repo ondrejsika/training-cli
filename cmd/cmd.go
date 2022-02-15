@@ -2,7 +2,7 @@ package cmd
 
 import (
 	_ "github.com/ondrejsika/training-cli/cmd/kubernetes"
-	_ "github.com/ondrejsika/training-cli/cmd/kubernetes/add_sikademo_cluster"
+	_ "github.com/ondrejsika/training-cli/cmd/kubernetes/connect"
 	"github.com/ondrejsika/training-cli/cmd/root"
 	_ "github.com/ondrejsika/training-cli/cmd/version"
 	"github.com/spf13/cobra"
