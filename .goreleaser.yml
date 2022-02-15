@@ -14,7 +14,7 @@ builds:
     ldflags:
       - -s
       - -w
-      - -X github.com/ondrejsika/training-cli/version/version.Version=v{{.Version}}
+      - -X github.com/ondrejsika/training-cli/version.Version=v{{.Version}}
     goos:
       - windows
       - linux
