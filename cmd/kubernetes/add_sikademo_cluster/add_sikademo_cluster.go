@@ -2,6 +2,7 @@ package add_sikademo_cluster
 
 import (
 	"errors"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"log"
@@ -39,10 +40,12 @@ var Cmd = &cobra.Command{
 		if _, err := os.Stat(kubeConf); err == nil {
 			// backup ~/.kube/config every time
 			copyFile(kubeConf, kubeConfBackup)
+			fmt.Println("Your original ~/.kube/config has been backed up to " + kubeConfBackup)
 
 			// backup ~/.kube/config to ~/.kube/config.original only if config.original is not exists
 			if _, err := os.Stat(kubeConfOriginal); errors.Is(err, os.ErrNotExist) {
 				copyFile(kubeConf, kubeConfOriginal)
+				fmt.Println("Your original ~/.kube/config has been copied to " + kubeConfOriginal)
 			}
 		}
 
@@ -51,6 +54,7 @@ var Cmd = &cobra.Command{
 
 		// copy ~/.kube/config.sikademo to ~/.kube/config
 		copyFile(kubeConfSikademo, kubeConf)
+		fmt.Println("You are connected to sikademo cluster (do-fra1-sikademo)")
 	},
 }
 
