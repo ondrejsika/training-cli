@@ -24,6 +24,5 @@ brew install ondrejsika/tap/training-cli
 Using **scoop**
 
 ```
-scoop bucket add ondrejsika https://github.com/ondrejsika/scoop-bucket.git
-scoop install ondrejsika/training-cli
+scoop install https://raw.githubusercontent.com/ondrejsika/scoop-bucket/master/training-cli.json
 ```
