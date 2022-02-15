@@ -7,4 +7,6 @@
   </p>
 </p>
 
+## Example Usage
+
 ![](./misc/images/training-cli_kubernetes_connect.png)
