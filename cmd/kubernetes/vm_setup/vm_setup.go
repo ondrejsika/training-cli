@@ -21,17 +21,24 @@ var Cmd = &cobra.Command{
 		if runtime.GOOS == "windows" {
 			log.Fatalln("vm-setup is not supported on windows. You can try WSL.")
 		}
+		sh("mkdir -p .kubernetes-training-bin")
+		sh("slu install-bin-tool --bin-dir .kubernetes-training-bin helm")
+		sh("slu install-bin-tool --bin-dir .kubernetes-training-bin kubectl")
+		sh("slu install-bin-tool --bin-dir .kubernetes-training-bin minikube")
+		sh("slu install-bin-tool --bin-dir .kubernetes-training-bin skaffold")
 		sh("git clone https://github.com/cykerway/complete-alias .kubernetes-training-extra/complete-alias")
 		sh("git clone https://github.com/jonmosco/kube-ps1 .kubernetes-training-extra/kube-ps1")
 		sh("git clone https://github.com/ahmetb/kubectx .kubernetes-training-extra/kubectx")
 
 		sh("git clone https://github.com/ondrejsika/kubernetes-training.git ~/.kubernetes-training-utils/xxx")
-		file(".bashrc.kubernetes-training", `. ~/.kubernetes-training-extra/complete-alias/complete_alias
+		file(".bashrc.kubernetes-training", `# kubernetes-training bashrc
+. ~/.kubernetes-training-extra/complete-alias/complete_alias
 
 . ~/.kubernetes-training-extra/kube-ps1/kube-ps1.sh
 export KUBE_PS1_SYMBOL_ENABLE=false
 export PS1='$(kube_ps1)'$PS1
 
+export PATH="$PATH":$HOME/.kubernetes-training-bin
 export PATH="$PATH":$HOME/.kubernetes-training-extra/kubectx
 
 source <(kubectl completion bash)
