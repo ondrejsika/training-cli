@@ -26,3 +26,9 @@ Using **scoop**
 ```
 scoop install https://raw.githubusercontent.com/ondrejsika/scoop-bucket/master/training-cli.json
 ```
+
+## Install using `slu` (Linux, Mac)
+
+```
+slu install-bin-tool training-cli
+```
