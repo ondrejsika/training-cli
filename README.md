@@ -19,6 +19,12 @@
 brew install ondrejsika/tap/training-cli
 ```
 
+## Install Linux
+
+```
+curl -fsSL https://raw.githubusercontent.com/ondrejsika/training-cli/master/install.sh | sh
+```
+
 ## Install Windows
 
 Using **scoop**
