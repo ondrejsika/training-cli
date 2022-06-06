@@ -30,7 +30,6 @@ var Cmd = &cobra.Command{
 		sh("git clone https://github.com/jonmosco/kube-ps1 .kubernetes-training-extra/kube-ps1")
 		sh("git clone https://github.com/ahmetb/kubectx .kubernetes-training-extra/kubectx")
 
-		sh("git clone https://github.com/ondrejsika/kubernetes-training.git ~/.kubernetes-training-utils/xxx")
 		file(".bashrc.kubernetes-training", `# kubernetes-training bashrc
 . ~/.kubernetes-training-extra/complete-alias/complete_alias
 
