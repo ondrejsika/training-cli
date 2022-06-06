@@ -44,6 +44,9 @@ source <(kubectl completion bash)
 source <(helm completion bash)
 source <(helm completion minikube)
 
+source <(helm completion slu)
+source <(helm completion training-cli)
+
 # kubectl
 alias k=kubectl
 complete -F _complete_alias k
