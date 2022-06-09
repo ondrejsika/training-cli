@@ -44,8 +44,8 @@ source <(kubectl completion bash)
 source <(helm completion bash)
 source <(minikube completion bash)
 
-source <(helm completion slu)
-source <(helm completion training-cli)
+source <(slu completion bash)
+source <(training-cli completion bash)
 
 # kubectl
 alias k=kubectl
