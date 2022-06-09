@@ -75,7 +75,7 @@ func copyFile(src, dest string) {
 	}
 }
 
-func downloadFile(path string, url string) error {
+func downloadFileRaw(path string, url string) error {
 	// Get the data
 	resp, err := http.Get(url)
 	if err != nil {
@@ -93,4 +93,11 @@ func downloadFile(path string, url string) error {
 	// Write the body to file
 	_, err = io.Copy(out, resp.Body)
 	return err
+}
+
+func downloadFile(path string, url string) {
+	err := downloadFileRaw(path, url)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
