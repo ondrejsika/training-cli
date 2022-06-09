@@ -42,7 +42,7 @@ export PATH="$PATH":$HOME/.kubernetes-training-extra/kubectx
 
 source <(kubectl completion bash)
 source <(helm completion bash)
-source <(helm completion minikube)
+source <(minikube completion bash)
 
 source <(helm completion slu)
 source <(helm completion training-cli)
