@@ -1,6 +1,7 @@
 package connect
 
 import (
+	"encoding/base64"
 	"errors"
 	"fmt"
 	"io"
@@ -30,6 +31,7 @@ var Cmd = &cobra.Command{
 		kubeDir := path.Join(home, ".kube")
 		kubeConf := path.Join(kubeDir, "config")
 		kubeConfSikademo := path.Join(kubeDir, "config.sikademo")
+		kubeConfSikademoBase64 := kubeConfSikademo + ".base64"
 		kubeConfBackup := path.Join(kubeDir, ".config."+t.Format("2006-01-02_15-04-05")+".backup")
 		kubeConfOriginal := path.Join(kubeDir, "config.original")
 
@@ -50,7 +52,8 @@ var Cmd = &cobra.Command{
 		}
 
 		// download ~/.kube/config.sikademo
-		downloadFile(kubeConfSikademo, "https://raw.githubusercontent.com/ondrejsika/kubeconfig-sikademo/master/kubeconfig")
+		downloadFile(kubeConfSikademoBase64, "https://raw.githubusercontent.com/ondrejsika/kubeconfig-sikademo/master/kubeconfig")
+		base64Decode(kubeConfSikademoBase64, kubeConfSikademo)
 
 		// copy ~/.kube/config.sikademo to ~/.kube/config
 		copyFile(kubeConfSikademo, kubeConf)
@@ -97,6 +100,21 @@ func downloadFileRaw(path string, url string) error {
 
 func downloadFile(path string, url string) {
 	err := downloadFileRaw(path, url)
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
+func base64Decode(src, dest string) {
+	bytesRead, err := ioutil.ReadFile(src)
+	if err != nil {
+		log.Fatal(err)
+	}
+	decoded, err := base64.StdEncoding.DecodeString(string(bytesRead))
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = ioutil.WriteFile(dest, []byte(decoded), 0644)
 	if err != nil {
 		log.Fatal(err)
 	}
