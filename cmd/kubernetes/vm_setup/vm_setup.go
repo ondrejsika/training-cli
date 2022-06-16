@@ -59,6 +59,10 @@ complete -F _complete_alias kx
 alias kn=kubens
 complete -F _complete_alias kn
 
+# Other Kubernetes related aliases
+
+alias kdev="kubectl run dev-$(date +%s) --rm -ti --image sikalabs/dev -- bash"
+
 alias w="watch -n 0.3"
 `)
 		sh(`echo ". ~/.bashrc.kubernetes-training\n" >> .bashrc`)
