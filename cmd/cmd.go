@@ -6,6 +6,7 @@ import (
 	_ "github.com/ondrejsika/training-cli/cmd/kubernetes/install"
 	_ "github.com/ondrejsika/training-cli/cmd/kubernetes/repo_setup"
 	_ "github.com/ondrejsika/training-cli/cmd/kubernetes/vm_setup"
+	_ "github.com/ondrejsika/training-cli/cmd/rancher"
 	"github.com/ondrejsika/training-cli/cmd/root"
 	_ "github.com/ondrejsika/training-cli/cmd/terraform"
 	_ "github.com/ondrejsika/training-cli/cmd/terraform/install"
