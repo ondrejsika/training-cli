@@ -8,13 +8,10 @@ func VMSetup() {
 	sh("slu install-bin-tool --bin-dir .kubernetes-training-bin kubectl")
 	sh("slu install-bin-tool --bin-dir .kubernetes-training-bin minikube")
 	sh("slu install-bin-tool --bin-dir .kubernetes-training-bin skaffold")
-	sh("git clone https://github.com/cykerway/complete-alias .kubernetes-training-extra/complete-alias")
 	sh("git clone https://github.com/jonmosco/kube-ps1 .kubernetes-training-extra/kube-ps1")
 	sh("git clone https://github.com/ahmetb/kubectx .kubernetes-training-extra/kubectx")
 
 	file(".bashrc.kubernetes-training", `# kubernetes-training bashrc
-. ~/.kubernetes-training-extra/complete-alias/complete_alias
-
 . ~/.kubernetes-training-extra/kube-ps1/kube-ps1.sh
 export KUBE_PS1_SYMBOL_ENABLE=false
 export PS1='$(kube_ps1)'$PS1

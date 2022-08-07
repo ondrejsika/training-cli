@@ -5,6 +5,7 @@ import (
 	"runtime"
 
 	parent_cmd "github.com/ondrejsika/training-cli/cmd/rancher"
+	"github.com/ondrejsika/training-cli/utils/general_utils"
 	"github.com/ondrejsika/training-cli/utils/kubernetes_utils"
 	"github.com/ondrejsika/training-cli/utils/rancher_utils"
 	"github.com/spf13/cobra"
@@ -18,6 +19,7 @@ var Cmd = &cobra.Command{
 		if runtime.GOOS == "windows" {
 			log.Fatalln("vm-setup is not supported on windows. You can try WSL.")
 		}
+		general_utils.VMSetup()
 		kubernetes_utils.VMSetup()
 		rancher_utils.VMSetup()
 	},
