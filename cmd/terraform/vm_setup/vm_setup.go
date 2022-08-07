@@ -10,6 +10,7 @@ import (
 	"runtime"
 
 	parent_cmd "github.com/ondrejsika/training-cli/cmd/terraform"
+	"github.com/ondrejsika/training-cli/utils/terraform_utils"
 	"github.com/spf13/cobra"
 )
 
@@ -21,21 +22,7 @@ var Cmd = &cobra.Command{
 		if runtime.GOOS == "windows" {
 			log.Fatalln("vm-setup is not supported on windows. You can try WSL.")
 		}
-		sh("mkdir -p .terraform-training-bin")
-		sh("slu install-bin-tool --bin-dir .terraform-training-bin terraform")
-		sh("git clone https://github.com/cykerway/complete-alias .terraform-training-extra/complete-alias")
-		file(".bashrc.terraform-training", `# terraform-training bashrc
-. ~/.terraform-training-extra/complete-alias/complete_alias
-
-export PATH="$PATH":$HOME/.terraform-training-bin
-
-# terraform
-alias tf=terraform
-complete -F _complete_alias tf
-
-alias w="watch -n 0.3"
-`)
-		sh(`echo ". ~/.bashrc.terraform-training\n" >> .bashrc`)
+		terraform_utils.VMSetup()
 	},
 }
 
