@@ -8,6 +8,7 @@ import (
 	"github.com/ondrejsika/training-cli/utils/general_utils"
 	"github.com/ondrejsika/training-cli/utils/kubernetes_utils"
 	"github.com/ondrejsika/training-cli/utils/rancher_utils"
+	"github.com/ondrejsika/training-cli/utils/terraform_utils"
 	"github.com/spf13/cobra"
 )
 
@@ -21,6 +22,7 @@ var Cmd = &cobra.Command{
 		}
 		general_utils.VMSetup()
 		kubernetes_utils.VMSetup()
+		terraform_utils.VMSetup()
 		rancher_utils.VMSetup()
 	},
 }
