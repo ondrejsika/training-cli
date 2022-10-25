@@ -11,6 +11,7 @@ func VMSetup() {
 	sh("slu install-bin-tool --bin-dir .kubernetes-training-bin krew")
 	sh(".kubernetes-training-bin/krew install krew")
 	sh(".kubernetes-training-bin/krew install tree")
+	sh(".kubernetes-training-bin/krew install lineage")
 	sh("git clone https://github.com/jonmosco/kube-ps1 .kubernetes-training-extra/kube-ps1")
 	sh("git clone https://github.com/ahmetb/kubectx .kubernetes-training-extra/kubectx")
 
