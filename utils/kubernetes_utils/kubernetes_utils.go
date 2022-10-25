@@ -8,6 +8,8 @@ func VMSetup() {
 	sh("slu install-bin-tool --bin-dir .kubernetes-training-bin kubectl")
 	sh("slu install-bin-tool --bin-dir .kubernetes-training-bin minikube")
 	sh("slu install-bin-tool --bin-dir .kubernetes-training-bin skaffold")
+	sh("slu install-bin-tool --bin-dir .kubernetes-training-bin krew")
+	sh(".kubernetes-training-bin/krew install krew")
 	sh("git clone https://github.com/jonmosco/kube-ps1 .kubernetes-training-extra/kube-ps1")
 	sh("git clone https://github.com/ahmetb/kubectx .kubernetes-training-extra/kubectx")
 
@@ -18,6 +20,7 @@ export PS1='$(kube_ps1)'$PS1
 
 export PATH="$PATH":$HOME/.kubernetes-training-bin
 export PATH="$PATH":$HOME/.kubernetes-training-extra/kubectx
+export PATH="$PATH:$HOME/.krew/bin"
 
 source <(kubectl completion bash)
 source <(helm completion bash)
