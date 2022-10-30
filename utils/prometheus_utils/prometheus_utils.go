@@ -7,6 +7,7 @@ func VMSetup() {
 	sh("slu install-bin --bin-dir .prometheus-training-bin prometheus")
 	sh("slu install-bin --bin-dir .prometheus-training-bin alertmanager")
 	sh("slu install-bin --bin-dir .prometheus-training-bin amtool")
+	sh("slu install-bin --bin-dir .prometheus-training-bin thanos")
 
 	file(".bashrc.prometheus-training", `# prometheus-training bashrc
 export PATH="$PATH":$HOME/.prometheus-training-bin
