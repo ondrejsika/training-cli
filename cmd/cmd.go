@@ -2,6 +2,7 @@ package cmd
 
 import (
 	_ "github.com/ondrejsika/training-cli/cmd/kafka"
+	_ "github.com/ondrejsika/training-cli/cmd/kafka/vm_setup"
 	_ "github.com/ondrejsika/training-cli/cmd/kubernetes"
 	_ "github.com/ondrejsika/training-cli/cmd/kubernetes/connect"
 	_ "github.com/ondrejsika/training-cli/cmd/kubernetes/install"
