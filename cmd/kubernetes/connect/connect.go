@@ -17,6 +17,8 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var FlagSuffix string
+
 var Cmd = &cobra.Command{
 	Use:     "connect",
 	Short:   "Add my sikademo cluster",
@@ -52,7 +54,7 @@ var Cmd = &cobra.Command{
 		}
 
 		// download ~/.kube/config.sikademo
-		downloadFile(kubeConfSikademoBase64, "https://raw.githubusercontent.com/ondrejsika/kubeconfig-sikademo/master/kubeconfig")
+		downloadFile(kubeConfSikademoBase64, "https://raw.githubusercontent.com/ondrejsika/kubeconfig-sikademo/master/kubeconfig"+FlagSuffix)
 		base64Decode(kubeConfSikademoBase64, kubeConfSikademo)
 
 		// copy ~/.kube/config.sikademo to ~/.kube/config
@@ -63,6 +65,13 @@ var Cmd = &cobra.Command{
 
 func init() {
 	parent_cmd.Cmd.AddCommand(Cmd)
+	Cmd.Flags().StringVarP(
+		&FlagSuffix,
+		"suffix",
+		"s",
+		"",
+		"Suffix of the kubeconfig file in the ondrejsika/kubeconfig-sikademo repository",
+	)
 }
 
 // Utils
