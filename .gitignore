@@ -11,6 +11,7 @@
 
 # Go
 training-cli
+training-cli-linux-amd64
 *.exe
 /dist/**
 cobra-docs
