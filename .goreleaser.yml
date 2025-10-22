@@ -1,3 +1,5 @@
+version: 2
+
 project_name: training-cli
 
 before:
@@ -42,7 +44,8 @@ builds:
     binary: training-cli
 
 archives:
-  - format: tar.gz
+  - formats:
+      - tar.gz
     name_template: "{{ .ProjectName }}_v{{ .Version }}_{{ .Os }}_{{ .Arch }}"
 
 release:
@@ -57,13 +60,13 @@ brews:
     name: training-cli
     conflicts:
       - training-cli-edge
-    tap:
+    repository:
       owner: ondrejsika
       name: homebrew-tap
     skip_upload: auto
     homepage: https://github.com/ondrejsika/training-cli
     url_template: "https://github.com/ondrejsika/training-cli/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
-    folder: Formula
+    directory: Formula
     caveats: "How to use this binary: https://github.com/ondrejsika/training-cli"
     description: "training-cli"
     install: |
@@ -74,13 +77,13 @@ brews:
     name: training-cli-edge
     conflicts:
       - training-cli
-    tap:
+    repository:
       owner: ondrejsika
       name: homebrew-tap
     skip_upload: false
     homepage: https://github.com/ondrejsika/training-cli
     url_template: "https://github.com/ondrejsika/training-cli/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
-    folder: Formula
+    directory: Formula
     caveats: "How to use this binary: https://github.com/ondrejsika/training-cli"
     description: "training-cli"
     install: |
@@ -129,10 +132,10 @@ dockers:
         - "--label=repository=https://github.com/ondrejsika/training-cli"
         - "--label=maintainer=Ondrej Sika &lt;ondrej@sika.io&gt;"
 
-scoop:
-  bucket:
-    owner: ondrejsika
-    name: scoop-bucket
-  homepage:  https://github.com/ondrejsika/training-cli
-  description: CLI Help for Ondrej Sika's Training
-  license: MIT
+scoops:
+  - repository:
+      owner: ondrejsika
+      name: scoop-bucket
+    homepage:  https://github.com/ondrejsika/training-cli
+    description: CLI Help for Ondrej Sika's Training
+    license: MIT
