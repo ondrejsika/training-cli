@@ -9,6 +9,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"os/exec"
 	"path"
 	"time"
 
@@ -57,8 +58,19 @@ var Cmd = &cobra.Command{
 		downloadFile(kubeConfSikademoBase64, "https://raw.githubusercontent.com/ondrejsika/kubeconfig-sikademo/master/kubeconfig"+FlagSuffix)
 		base64Decode(kubeConfSikademoBase64, kubeConfSikademo)
 
-		// copy ~/.kube/config.sikademo to ~/.kube/config
-		copyFile(kubeConfSikademo, kubeConf)
+		// merge or copy ~/.kube/config.sikademo to ~/.kube/config
+		if _, err := os.Stat(kubeConf); err == nil {
+			// config exists, merge using slu
+			cmd := exec.Command("slu", "k8s", "config", "add", "-p", kubeConfSikademo)
+			output, err := cmd.CombinedOutput()
+			if err != nil {
+				log.Fatalf("Error merging kubeconfig: %v\n%s", err, string(output))
+			}
+			fmt.Println("Kubeconfig merged successfully")
+		} else {
+			// config doesn't exist, copy the file
+			copyFile(kubeConfSikademo, kubeConf)
+		}
 		fmt.Println("You are connected to my demo cluster")
 	},
 }
