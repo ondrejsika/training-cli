@@ -5,7 +5,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -89,11 +88,11 @@ func init() {
 // Utils
 
 func copyFile(src, dest string) {
-	bytesRead, err := ioutil.ReadFile(src)
+	bytesRead, err := os.ReadFile(src)
 	if err != nil {
 		log.Fatal(err)
 	}
-	err = ioutil.WriteFile(dest, bytesRead, 0644)
+	err = os.WriteFile(dest, bytesRead, 0644)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -127,7 +126,7 @@ func downloadFile(path string, url string) {
 }
 
 func base64Decode(src, dest string) {
-	bytesRead, err := ioutil.ReadFile(src)
+	bytesRead, err := os.ReadFile(src)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -135,7 +134,7 @@ func base64Decode(src, dest string) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	err = ioutil.WriteFile(dest, []byte(decoded), 0644)
+	err = os.WriteFile(dest, []byte(decoded), 0644)
 	if err != nil {
 		log.Fatal(err)
 	}
