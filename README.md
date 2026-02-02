@@ -36,5 +36,5 @@ scoop install https://raw.githubusercontent.com/ondrejsika/scoop-bucket/master/t
 ## Install using `slu` (Linux, Mac)
 
 ```
-slu install-bin-tool training-cli
+slu install-bin training-cli
 ```
