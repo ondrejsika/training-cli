@@ -1,3 +1,5 @@
+[Ondrej Sika (sika.io)](https://sika.io) | <ondrej@sika.io>
+
 <p align="center">
   <h1 align="center">training-cli</h1>
   <p align="center">
