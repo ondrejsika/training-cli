@@ -1,3 +1,6 @@
+> [!WARNING]
+> This project is **deprecated!** I've moved `training-cli` and training related stuff to [sikalabs/slr](https://github.com/sikalabs/slr) into `slr training`.
+
 [Ondrej Sika (sika.io)](https://sika.io) | <ondrej@sika.io>
 
 <p align="center">
